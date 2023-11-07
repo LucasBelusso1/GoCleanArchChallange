@@ -9,6 +9,10 @@ type conf struct {
 	DBUser            string `mapstructure:"DB_USER"`
 	DBPassword        string `mapstructure:"DB_PASSWORD"`
 	DBName            string `mapstructure:"DB_NAME"`
+	RabbitMqHost      string `mapstructure:"RABBITMQ_HOST"`
+	RabbitMqPort      string `mapstructure:"RABBITMQ_PORT"`
+	RabbitMqUser      string `mapstructure:"RABBITMQ_USER"`
+	RabbitMqPassword  string `mapstructure:"RABBITMQ_PASSWORD"`
 	WebServerPort     string `mapstructure:"WEB_SERVER_PORT"`
 	GRPCServerPort    string `mapstructure:"GRPC_SERVER_PORT"`
 	GraphQLServerPort string `mapstructure:"GRAPHQL_SERVER_PORT"`
