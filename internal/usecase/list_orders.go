@@ -2,25 +2,14 @@ package usecase
 
 import (
 	"github.com/LucasBelusso1/GoCleanArchChallange/internal/entity"
-	"github.com/LucasBelusso1/GoCleanArchChallange/pkg/events"
 )
 
 type ListOrderUseCase struct {
 	OrderRepository entity.OrderRepositoryInterface
-	OrderCreated    events.EventInterface
-	EventDispatcher events.EventDispatcherInterface
 }
 
-func NewListOrderUseCase(
-	OrderRepository entity.OrderRepositoryInterface,
-	OrderCreated events.EventInterface,
-	EventDispatcher events.EventDispatcherInterface,
-) *ListOrderUseCase {
-	return &ListOrderUseCase{
-		OrderRepository: OrderRepository,
-		OrderCreated:    OrderCreated,
-		EventDispatcher: EventDispatcher,
-	}
+func NewListOrderUseCase(OrderRepository entity.OrderRepositoryInterface) *ListOrderUseCase {
+	return &ListOrderUseCase{OrderRepository: OrderRepository}
 }
 
 func (c *ListOrderUseCase) Execute() ([]OrderOutputDTO, error) {
