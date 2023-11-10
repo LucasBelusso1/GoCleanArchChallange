@@ -8,4 +8,5 @@ import "github.com/LucasBelusso1/GoCleanArchChallange/internal/usecase"
 
 type Resolver struct {
 	CreateOrderUseCase usecase.CreateOrderUseCase
+	ListOrderUseCase   usecase.ListOrderUseCase
 }
