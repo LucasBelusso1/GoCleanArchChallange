@@ -10,12 +10,10 @@ import (
 	"github.com/99designs/gqlgen/graphql/playground"
 	"github.com/LucasBelusso1/GoCleanArchChallange/configs"
 	"github.com/LucasBelusso1/GoCleanArchChallange/internal/event/handler"
-	"github.com/LucasBelusso1/GoCleanArchChallange/internal/infra/database"
 	"github.com/LucasBelusso1/GoCleanArchChallange/internal/infra/graph"
 	"github.com/LucasBelusso1/GoCleanArchChallange/internal/infra/grpc/pb"
 	"github.com/LucasBelusso1/GoCleanArchChallange/internal/infra/grpc/service"
 	"github.com/LucasBelusso1/GoCleanArchChallange/internal/infra/web/webserver"
-	"github.com/LucasBelusso1/GoCleanArchChallange/internal/usecase"
 	"github.com/LucasBelusso1/GoCleanArchChallange/pkg/events"
 	"github.com/streadway/amqp"
 	"google.golang.org/grpc"
@@ -46,9 +44,7 @@ func main() {
 
 	createOrderUseCase := NewCreateOrderUseCase(db, eventDispatcher)
 
-	//TODO: Alterar para utilizar DI.
-	orderRepository := database.NewOrderRepository(db)
-	listOrderUseCase := usecase.NewListOrderUseCase(orderRepository)
+	listOrderUseCase := NewListOrderUseCase(db)
 
 	webserver := webserver.NewWebServer(conf.WebServerPort)
 	webOrderHandler := NewWebOrderHandler(db, eventDispatcher)
