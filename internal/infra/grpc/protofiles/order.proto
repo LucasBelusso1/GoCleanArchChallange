@@ -23,5 +23,5 @@ message OrderList {
 
 service OrderService {
   rpc CreateOrder(CreateOrderRequest) returns (Order);
-  rpc GetOrders(blank) returns (OrderList);
+  rpc ListOrders(blank) returns (OrderList);
 }
